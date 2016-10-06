@@ -1,0 +1,27 @@
+<h1 class="page-header">{{dataList.title}}</h1>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="item in dataList.subjects">
+  	<span class="badge">{{item.rating.average}}</span>
+  	<div class="media">
+	  <a class="media-left media-middle" href="#">
+	    <img ng-src="{{item.images.medium}}" alt="...">
+	  </a>
+	  <div class="media-body">
+	    <h4 class="media-heading">{{item.title}}</h4>
+	    <p>
+	    	类型:
+	    	<strong ng-repeat="genres in item.genres">{{genres}}{{$last?'':'、'}}</strong>
+	    </p>
+	    <p>
+	    	导演:
+	    	<strong ng-repeat="director in item.directors">{{director.name}}{{$last?'':'、'}}</strong>
+	    </p>
+	    <p>
+	    	主演:
+	    	<strong ng-repeat="cast in item.casts">{{cast.name}}{{$last?'':'、'}}</strong>
+	    </p>
+
+	  </div>
+	</div>
+  </li>
+</ul>

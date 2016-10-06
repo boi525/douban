@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+    </head>
+    <body>
+        <script type="text/javascript">
+        		function jsonp(url, data, fn) {
+        			function getData(data) {
+        				fn(data);
+        			}
+
+        			window['getData'] = getData;
+
+        			// 处理data数据
+        			var searchData = '';
+        			if(data.length) {
+        				searchData = "?" + JSON.stringify(data);
+        			}else {
+        				searchData = "?";
+        			}
+
+        			// 1. 创建script标签
+        			var script = document.createElement("script");
+        			// 2. 加入callback = 
+        			script.src = url + searchData + "callback=getData";
+        			// 3. 插入标签
+        			document.body.appendChild(script);
+        		}
+
+        		jsonp("http://api.douban.com/v2/movie/in_theaters", {}, function(data) {
+        			console.log(data);
+        		});
+
+        </script>
+    </body>
+</html>
