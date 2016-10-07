@@ -1,0 +1,90 @@
+<h1 class="page-header">{{dataList.title}}</h1>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="item in dataList.subjects">
+  	<span class="badge">{{item.rating.average}}</span>
+  	<div class="media">
+	  <a class="media-left media-middle" href="#">
+	    <img ng-src="{{item.images.medium}}" alt="...">
+	  </a>
+	  <div class="media-body">
+	    <h4 class="media-heading">{{item.title}}</h4>
+	    <p>
+	    	类型:
+	    	<strong ng-repeat="genres in item.genres">{{genres}}{{$last?'':'、'}}</strong>
+	    </p>
+	    <p>
+	    	导演:
+	    	<strong ng-repeat="director in item.directors">{{director.name}}{{$last?'':'、'}}</strong>
+	    </p>
+	    <p>
+	    	主演:
+	    	<strong ng-repeat="cast in item.casts">{{cast.name}}{{$last?'':'、'}}</strong>
+	    </p>
+
+	  </div>
+	</div>
+  </li>
+</ul>
+<p>
+	总共{{dataList.total}}条数据，共{{currentPage}}/{{totalPage}}页
+</p>
+<nav>
+  <ul class="pager">
+    <li class="previous" ng-class="{disabled:currentPage == 1}" ng-click="goPre(currentPage-1)"><a>&larr; 上一页</a></li>
+    <li class="next" ng-class="{disabled:currentPage == totalPage}" ng-click="goNext(currentPage+1)"><a>下一页 &rarr;</a></li>
+  </ul>
+</nav>
+
+<div class="movieLoading" ng-show="isLoading">
+	<div class="cssload-loader">
+		<div class="cssload-top">
+			<div class="cssload-square">
+				<div class="cssload-square">
+					<div class="cssload-square">
+						<div class="cssload-square">
+							<div class="cssload-square"><div class="cssload-square">
+
+							</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cssload-bottom">
+			<div class="cssload-square">
+				<div class="cssload-square">
+					<div class="cssload-square">
+						<div class="cssload-square">
+							<div class="cssload-square"><div class="cssload-square">
+							</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cssload-left">
+			<div class="cssload-square">
+				<div class="cssload-square">
+					<div class="cssload-square">
+						<div class="cssload-square">
+							<div class="cssload-square"><div class="cssload-square">
+							</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cssload-right">
+			<div class="cssload-square">
+				<div class="cssload-square">
+					<div class="cssload-square">
+						<div class="cssload-square">
+							<div class="cssload-square"><div class="cssload-square">
+							</div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

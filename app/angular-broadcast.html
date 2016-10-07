@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+        <title></title>
+        <script type="text/javascript">
+        	var app = angular.module('app', []);
+        	app.controller('demo1', ['$scope', function($scope){
+        		
+        		$scope.broadcast = function() {
+        			$scope.$emit('aaa', {name:"213"});
+        		};
+
+        		$scope.$on('bbb', function(data) {
+        			console.log(data);
+        		});
+        	}]);
+
+        	app.controller('demo2', ['$scope', function($scope){
+        		$scope.$on('aaa', function(data) {
+        			console.log(data);
+        		});
+
+        		$scope.$on('bbb', function(data) {
+        			console.log(data);
+        		});
+        	}]);
+
+        	app.controller('demo3', ['$scope', function($scope){
+        		$scope.$on('aaa', function(data) {
+        			console.log(data);
+        		});
+
+        		$scope.emit = function() {
+        			$scope.$emit('bbb', {"age":123});
+        		}
+        	}]);
+        </script>
+    </head>
+    <body ng-app="app">
+        <div ng-controller="demo1">
+        	<button ng-click="broadcast()">向自控制器传递</button>
+        	<div ng-controller="demo2">
+        		
+        	</div>
+        	<div>
+        		<div ng-controller="demo3">
+        			<button ng-click="emit()">向父亲传递信息</button>
+        		</div>
+        	</div>
+        </div>
+    </body>
+</html>
