@@ -45,19 +45,5 @@
                 $scope.currentPage--;
             }
         };
-
-        // 接受广播数据
-        // $scope.$on('dataListMf', function(event, data) {
-        //     console.log(data);
-        //     $scope.dataList = data;
-        //     $scope.totalPage = Math.ceil(data.total/pageSize);
-        //     $scope.$apply();
-        // });
-
-
-        // 查看详情功能怎么实现
-        // 1. 查看API，豆瓣请求的
-        // 2. http://api.douban.com/v2/movie/subject/1764796
-
     }]);
 })(angular);
